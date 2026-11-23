@@ -2072,6 +2072,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       btn.setAttribute('aria-selected', btn.dataset.screen === name ? 'true':'false');
     });
     window.scrollTo({top:0, behavior:'instant' in window ? 'instant':'auto'});
+    if(name === 'itinerary'){ showMap(currentDay); }
   }
   document.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){ showScreen(btn.dataset.screen); });
@@ -2092,12 +2093,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
   // ---- day chips ----
   var dayChips = Array.prototype.slice.call(document.querySelectorAll('.daychip'));
   var dayPanels = Array.prototype.slice.call(document.querySelectorAll('.daypanel'));
+  var currentDay = 0;
   function selectDay(idx){
+    currentDay = idx;
     dayChips.forEach(function(c){ c.setAttribute('aria-selected', c.dataset.day === String(idx) ? 'true':'false'); });
     dayPanels.forEach(function(p){ p.hidden = (p.dataset.panel !== String(idx)); });
     var sel = dayChips[idx];
     if(sel && sel.scrollIntoView) sel.scrollIntoView({inline:'center', block:'nearest'});
-    showMap(idx);
+    var itinEl = document.getElementById('screen-itinerary');
+    if(itinEl && !itinEl.hidden){ showMap(idx); }
   }
   dayChips.forEach(function(chip){
     chip.addEventListener('click', function(){ selectDay(parseInt(chip.dataset.day,10)); });
