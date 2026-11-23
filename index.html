@@ -642,6 +642,15 @@
     box-shadow:0 0 0 1px var(--gold);
   }
   .trip-pin.pin-end{background:var(--red);box-shadow:0 0 0 1px var(--red);}
+  .trip-tooltip{
+    background:rgba(11,18,38,.88)!important;
+    border:1px solid rgba(227,178,60,.35)!important;
+    color:#f3efe6!important;
+    font-size:.64rem!important;
+    padding:2px 6px!important;
+    box-shadow:none!important;
+  }
+  .trip-tooltip::before{display:none!important;}
 
   /* ---------- leaflet (inlined, cdnjs stylesheets are blocked in artifact sandbox) ---------- */
   /* required styles */
@@ -2165,15 +2174,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var pts = dayRoutes[idx];
     if(!el || !pts || !pts.length || typeof L === 'undefined') return null;
     var map = L.map(el, { zoomControl:true, attributionControl:true, scrollWheelZoom:false });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
       maxZoom:19,
-      attribution:'&copy; OpenStreetMap'
+      detectRetina:true,
+      subdomains:'abcd',
+      attribution:'&copy; OpenStreetMap &copy; CARTO'
     }).addTo(map);
     var latlngs = pts.map(function(p){ return [p[1], p[2]]; });
     latlngs.forEach(function(ll, i){
       L.marker(ll, { icon: pinIcon(i === latlngs.length - 1 && latlngs.length > 1) })
         .addTo(map)
-        .bindTooltip(pts[i][0], { direction:'top', offset:[0,-6] });
+        .bindTooltip(pts[i][0], { direction:'top', offset:[0,-6], permanent:true, className:'trip-tooltip', interactive:false });
     });
     if(latlngs.length > 1){
       var line = L.polyline(latlngs, { color:'#e3b23c', weight:2.5, opacity:.8, dashArray:'1,6' }).addTo(map);
