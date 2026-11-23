@@ -2173,12 +2173,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var el = document.getElementById('map'+idx);
     var pts = dayRoutes[idx];
     if(!el || !pts || !pts.length || typeof L === 'undefined') return null;
-    var map = L.map(el, { zoomControl:true, attributionControl:true, scrollWheelZoom:false });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-      maxZoom:19,
-      detectRetina:true,
-      subdomains:'abcd',
-      attribution:'&copy; OpenStreetMap &copy; CARTO'
+    var map = L.map(el, { zoomControl:true, attributionControl:true, scrollWheelZoom:false, maxZoom:16 });
+    L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom:16,
+      attribution:'&copy; Esri'
     }).addTo(map);
     var latlngs = pts.map(function(p){ return [p[1], p[2]]; });
     latlngs.forEach(function(ll, i){
