@@ -613,42 +613,35 @@
     text-decoration:none;
   }
 
-  /* ---------- route chain (time + place + travel duration, at a glance) ---------- */
+  /* ---------- route chain (blog-style vertical at-a-glance summary) ---------- */
   .rchain{
-    display:flex;
-    align-items:flex-start;
-    overflow-x:auto;
-    gap:0;
-    padding:16px 10px 12px;
+    padding:14px 16px;
     margin:12px 0 4px;
     background:var(--surface);
     border:1px solid var(--line);
     border-radius:14px;
-    -webkit-overflow-scrolling:touch;
   }
-  .rchain::-webkit-scrollbar{display:none;}
-  .rc-stop{
-    flex:0 0 auto;
-    width:92px;
+  .rc-line{
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:3px;
+    align-items:baseline;
+    gap:10px;
   }
-  .rc-time{font-size:.68rem;color:var(--gold);font-variant-numeric:tabular-nums;font-weight:700;}
-  .rc-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
-  .rc-name{font-size:.68rem;color:var(--ink-dim);line-height:1.3;padding:0 2px;}
-  .rc-seg{
-    flex:0 0 auto;
-    width:42px;
+  .rc-time{
+    flex:0 0 38px;
+    font-size:.74rem;
+    color:var(--gold);
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .rc-place{font-size:.84rem;color:var(--ink);font-weight:600;}
+  .rc-connector{
     display:flex;
-    flex-direction:column;
     align-items:center;
-    padding-top:17px;
+    gap:5px;
+    padding:3px 0 3px 48px;
+    font-size:.68rem;
+    color:var(--ink-faint);
   }
-  .rc-seg-line{width:100%;height:1px;background:var(--line-strong);}
-  .rc-dur{font-size:.56rem;color:var(--ink-faint);margin-top:5px;line-height:1.25;text-align:center;}
 
 </style>
 </head>
@@ -772,17 +765,17 @@
           <p>입국 후 시부야에 자리 잡고 스크램블 교차로·109·유니클로로 쇼핑, 쯔유·피노 헤어팩 같은 쇼핑리스트도 오늘 끝내요. 저녁은 시루베에서.</p>
           <div class="day-badges"><span class="badge">숙소 미정 · 시부야 기준</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">10:35</span><span class="rc-dot"></span><span class="rc-name">✈️ 나리타공항</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚆 N'EX<br/>1h15m</span></div>
-            <div class="rc-stop"><span class="rc-time">13:45</span><span class="rc-dot"></span><span class="rc-name">🍽️ 나카요시(점심)</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">15:00</span><span class="rc-dot"></span><span class="rc-name">📸 스크램블교차로</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">15:30</span><span class="rc-dot"></span><span class="rc-name">🛍️ 시부야109</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">17:30</span><span class="rc-dot"></span><span class="rc-name">🛒 메가돈키호테</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">19:00</span><span class="rc-dot"></span><span class="rc-name">🍽️ 시루베(저녁)</span></div>
+            <div class="rc-line"><span class="rc-time">10:35</span><span class="rc-place">✈️ 나리타공항</span></div>
+            <div class="rc-connector">↓ 🚆 N'EX · 1시간15분</div>
+            <div class="rc-line"><span class="rc-time">13:45</span><span class="rc-place">🍽️ 나카요시 (점심)</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">15:00</span><span class="rc-place">📸 스크램블 교차로</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">15:30</span><span class="rc-place">🛍️ 시부야109</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">17:30</span><span class="rc-place">🛒 메가돈키호테</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">19:00</span><span class="rc-place">🍽️ 시루베 (저녁)</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Narita+Airport&amp;destination=Shirube+Shibuya&amp;waypoints=Shibuya+Stream|Shibuya+Scramble+Crossing|Shibuya+109|Don+Quijote+Shibuya&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
           <div class="route-strip">
@@ -844,17 +837,17 @@
           <p>이케부쿠로에서 치이카와파크와 집사카페로 오전을 보내고, 아키하바라 라디오회관을 거쳐 긴자에서 점심·쇼핑·저녁까지.</p>
           <div class="day-badges"><span class="badge good">평일 · 혼잡 낮음</span><span class="badge warn">이마카츠는 15:40 도착시 브레이크타임 주의</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">09:30</span><span class="rc-dot"></span><span class="rc-name">📸 치이카와파크</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">12:00</span><span class="rc-dot"></span><span class="rc-name">🎩 Swallowtail</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚇 지하철<br/>20분</span></div>
-            <div class="rc-stop"><span class="rc-time">14:20</span><span class="rc-dot"></span><span class="rc-name">🛍️ 라디오회관</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚇 지하철<br/>20분</span></div>
-            <div class="rc-stop"><span class="rc-time">15:40</span><span class="rc-dot"></span><span class="rc-name">🍽️ 츠지타(점심)</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">16:40</span><span class="rc-dot"></span><span class="rc-name">🛍️ 긴자식스</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">18:30</span><span class="rc-dot"></span><span class="rc-name">🍽️ 규탄노레몬</span></div>
+            <div class="rc-line"><span class="rc-time">09:30</span><span class="rc-place">📸 치이카와파크</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">12:00</span><span class="rc-place">🎩 Swallowtail</span></div>
+            <div class="rc-connector">↓ 🚇 지하철 20분</div>
+            <div class="rc-line"><span class="rc-time">14:20</span><span class="rc-place">🛍️ 라디오회관</span></div>
+            <div class="rc-connector">↓ 🚇 지하철 20분</div>
+            <div class="rc-line"><span class="rc-time">15:40</span><span class="rc-place">🍽️ 츠지타 (점심)</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">16:40</span><span class="rc-place">🛍️ 긴자식스</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">18:30</span><span class="rc-place">🍽️ 규탄노레몬</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Sunshine+City+Ikebukuro&amp;destination=Gyutan+no+Lemon+Ginza&amp;waypoints=Butlers+Cafe+Swallowtail+Ikebukuro|Akihabara+Radio+Kaikan|Ginza+Six&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
           <div class="route-strip">
@@ -908,17 +901,17 @@
           <p>슬램덩크 성지 두 곳과 고마치도리, 로컬 한 끼까지. 저녁은 신주쿠로 돌아와 노다핀에서.</p>
           <div class="day-badges"><span class="badge good">쾌청 확률 약 76% (12월 하순)</span><span class="badge">연말 당일 · 한적</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">07:30</span><span class="rc-dot"></span><span class="rc-name">시부야 출발</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚆 열차<br/>60분</span></div>
-            <div class="rc-stop"><span class="rc-time">09:00</span><span class="rc-dot"></span><span class="rc-name">📸 코코마에역</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚃 에노덴<br/>5분</span></div>
-            <div class="rc-stop"><span class="rc-time">10:15</span><span class="rc-dot"></span><span class="rc-name">📸 이나무라가사키</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚃 에노덴<br/>10분</span></div>
-            <div class="rc-stop"><span class="rc-time">11:30</span><span class="rc-dot"></span><span class="rc-name">🍽️ 오자와(점심)</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">12:30</span><span class="rc-dot"></span><span class="rc-name">🛍️ 고마치도리</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚆 열차<br/>60분</span></div>
-            <div class="rc-stop"><span class="rc-time">18:30</span><span class="rc-dot"></span><span class="rc-name">🍽️ 노다핀(저녁)</span></div>
+            <div class="rc-line"><span class="rc-time">07:30</span><span class="rc-place">시부야 출발</span></div>
+            <div class="rc-connector">↓ 🚆 열차 60분</div>
+            <div class="rc-line"><span class="rc-time">09:00</span><span class="rc-place">📸 코코마에역</span></div>
+            <div class="rc-connector">↓ 🚃 에노덴 5분</div>
+            <div class="rc-line"><span class="rc-time">10:15</span><span class="rc-place">📸 이나무라가사키</span></div>
+            <div class="rc-connector">↓ 🚃 에노덴 10분</div>
+            <div class="rc-line"><span class="rc-time">11:30</span><span class="rc-place">🍽️ 오자와 (점심)</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">12:30</span><span class="rc-place">🛍️ 고마치도리</span></div>
+            <div class="rc-connector">↓ 🚆 열차 60분</div>
+            <div class="rc-line"><span class="rc-time">18:30</span><span class="rc-place">🍽️ 노다핀 (저녁)</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Shibuya+Station&amp;destination=Nodapin+Kabukicho&amp;waypoints=Kamakura+Station|Kamakurakoukomae+Station|Inamuragasaki|Komachi+Street+Kamakura&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
           <div class="route-strip">
@@ -995,17 +988,17 @@
           <p>후지산 뷰와 로컬 점심까지 즐기고 시즈오카에서 하루 묵어요. 저녁은 숙소 근처에서 자유롭게.</p>
           <div class="day-badges"><span class="badge good">겨울철 후지산 전망 약 60〜70%</span><span class="badge">1박</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">07:00</span><span class="rc-dot"></span><span class="rc-name">도쿄역 출발</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚅 신칸센<br/>53분</span></div>
-            <div class="rc-stop"><span class="rc-time">08:30</span><span class="rc-dot"></span><span class="rc-name">📸 니혼다이라</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚗 이동<br/>약 30분</span></div>
-            <div class="rc-stop"><span class="rc-time">10:00</span><span class="rc-dot"></span><span class="rc-name">📸 미호노마츠바라</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚗 이동<br/>약 30분</span></div>
-            <div class="rc-stop"><span class="rc-time">12:30</span><span class="rc-dot"></span><span class="rc-name">🍽️ 카시노이치(점심)</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚶 도보</span></div>
-            <div class="rc-stop"><span class="rc-time">14:00</span><span class="rc-dot"></span><span class="rc-name">☕ 나나야(카페)</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚗 이동</span></div>
-            <div class="rc-stop"><span class="rc-time">15:00</span><span class="rc-dot"></span><span class="rc-name">🏨 시즈오카 숙소</span></div>
+            <div class="rc-line"><span class="rc-time">07:00</span><span class="rc-place">도쿄역 출발</span></div>
+            <div class="rc-connector">↓ 🚅 신칸센 53분</div>
+            <div class="rc-line"><span class="rc-time">08:30</span><span class="rc-place">📸 니혼다이라</span></div>
+            <div class="rc-connector">↓ 🚗 이동 약 30분</div>
+            <div class="rc-line"><span class="rc-time">10:00</span><span class="rc-place">📸 미호노마츠바라</span></div>
+            <div class="rc-connector">↓ 🚗 이동 약 30분</div>
+            <div class="rc-line"><span class="rc-time">12:30</span><span class="rc-place">🍽️ 카시노이치 (점심)</span></div>
+            <div class="rc-connector">↓ 🚶 도보</div>
+            <div class="rc-line"><span class="rc-time">14:00</span><span class="rc-place">☕ 나나야 (카페)</span></div>
+            <div class="rc-connector">↓ 🚗 이동</div>
+            <div class="rc-line"><span class="rc-time">15:00</span><span class="rc-place">🏨 시즈오카 숙소</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Tokyo+Station&amp;destination=Shizuoka+Station&amp;waypoints=Nihondaira+Yume+no+Terrace|Miho+no+Matsubara|Kashinoichi+Shimizu+Fish+Market&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
           <div class="route-strip">
@@ -1052,11 +1045,11 @@
           <p>시즈오카에서 신칸센으로 짧게 이동해 아타미 료칸에서 온천과 가이세키로 쉬어가요. 7일차 나리타 이동까지 고려한 위치예요.</p>
           <div class="day-badges"><span class="badge good">시즈오카→아타미 약 25~30분</span><span class="badge">료칸 미정</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">오전</span><span class="rc-dot"></span><span class="rc-name">시즈오카역 출발</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚅 신칸센<br/>25~30분</span></div>
-            <div class="rc-stop"><span class="rc-time">—</span><span class="rc-dot"></span><span class="rc-name">아타미역</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚗 이동</span></div>
-            <div class="rc-stop"><span class="rc-time">오후</span><span class="rc-dot"></span><span class="rc-name">♨️ 료칸 체크인</span></div>
+            <div class="rc-line"><span class="rc-time">오전</span><span class="rc-place">시즈오카역 출발</span></div>
+            <div class="rc-connector">↓ 🚅 신칸센 25~30분</div>
+            <div class="rc-line"><span class="rc-time">—</span><span class="rc-place">아타미역</span></div>
+            <div class="rc-connector">↓ 🚗 이동</div>
+            <div class="rc-line"><span class="rc-time">오후</span><span class="rc-place">♨️ 료칸 체크인</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Shizuoka+Station&amp;destination=Atami+Station&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
           <div class="route-strip">
@@ -1090,13 +1083,13 @@
           <p>늦어도 아타미역 06:30〜07:00 출발을 목표로 — 나리타 9시 도착 안전마진이에요.</p>
           <div class="day-badges"><span class="badge warn">9시까지 나리타 도착 필요</span></div>
           <div class="rchain">
-            <div class="rc-stop"><span class="rc-time">06:30</span><span class="rc-dot"></span><span class="rc-name">아타미역 출발</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚅 신칸센<br/>35분</span></div>
-            <div class="rc-stop"><span class="rc-time">07:15</span><span class="rc-dot"></span><span class="rc-name">도쿄역</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">🚆 N'EX<br/>55분</span></div>
-            <div class="rc-stop"><span class="rc-time">09:00</span><span class="rc-dot"></span><span class="rc-name">나리타공항</span></div>
-            <div class="rc-seg"><span class="rc-seg-line"></span><span class="rc-dur">✈️ 비행<br/>2h30m</span></div>
-            <div class="rc-stop"><span class="rc-time">14:50</span><span class="rc-dot"></span><span class="rc-name">🛬 인천 도착</span></div>
+            <div class="rc-line"><span class="rc-time">06:30</span><span class="rc-place">아타미역 출발</span></div>
+            <div class="rc-connector">↓ 🚅 신칸센 35분</div>
+            <div class="rc-line"><span class="rc-time">07:15</span><span class="rc-place">도쿄역</span></div>
+            <div class="rc-connector">↓ 🚆 N'EX 55분</div>
+            <div class="rc-line"><span class="rc-time">09:00</span><span class="rc-place">나리타공항</span></div>
+            <div class="rc-connector">↓ ✈️ 비행 2시간30분</div>
+            <div class="rc-line"><span class="rc-time">14:50</span><span class="rc-place">🛬 인천 도착</span></div>
           </div>
           <a class="map-all-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Atami+Station&amp;destination=Narita+Airport&amp;waypoints=Tokyo+Station&amp;travelmode=transit" target="_blank" rel="noopener">🗺 이 날 전체 동선 지도로 보기 ↗</a>
         </div>
